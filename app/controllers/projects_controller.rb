@@ -6,11 +6,16 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
   end
+
   def create
     @project = Project.new(params[:project])
-    @project.save!
-    flash[:notice] = "등록 성공"
-    redirect_to @project
+    if @project.save
+      flash[:notice] = "등록 성공"
+      redirect_to @project
+    else
+      flash[:alert] = "Project has not been created."
+      render :action => "new"
+    end
   end
 
   def show
