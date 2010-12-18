@@ -7,6 +7,9 @@ Feature: Creating projects
     Given I am on the homepage
     When I follow "New Project"
     And I fill in "Name" with "TextMate 2"
+
     And I press "등록"
     Then I should see "등록 성공"
+    And I should be on the project page for "TextMate 2"
+    And I should see "TextMate 2 - Projects - Ticketee"
     
